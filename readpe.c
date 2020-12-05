@@ -29,7 +29,9 @@ int main(int argc, char *argv[]) {
   if (fread(buffer, 32, 1, fh) != 1)
     err("Error! I was unable to read the 32 bytes of the file.");
 
-  if (! ispe(buffer))
+  fclose(fh);
+
+  if (!ispe(buffer))
     err("Error! Pass an .exe file.");
   
   return 0;
