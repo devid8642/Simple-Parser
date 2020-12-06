@@ -1,17 +1,10 @@
 #include <stdio.h>
 #include <stdlib.h>
-#include <stdbool.h>
+#include "lib/testpe.h"
 
 void err(char *msg) {
   fprintf(stderr, "%s\n", msg);
   exit(1);
-}
-
-bool ispe(const unsigned char *b) {
-  if (b[0] != 'M' || b[1] != 'Z')
-    return false;
-
-  return true;
 }
 
 int main(int argc, char *argv[]) {
@@ -31,7 +24,7 @@ int main(int argc, char *argv[]) {
 
   fclose(fh);
 
-  if (!ispe(buffer))
+  if (!testpe_ispe(buffer))
     err("Error! Pass an .exe file.");
   
   return 0;
