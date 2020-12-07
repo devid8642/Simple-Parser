@@ -1,6 +1,5 @@
 # Simple-Parser
-Simple parser of PE files.
-
+Simple parser of PE files. Final project of the course ["Modern Programming in C."](https://www.youtube.com/playlist?list=PLIfZMtpPYFP5qaS2RFQxcNVkmJLGQwyKE).
 ## Downloading
 
 To download the code, git must be installed on your system. Being aware of this, run in the terminal:
