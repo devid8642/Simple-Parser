@@ -8,25 +8,21 @@ void err(char *msg) {
 }
 
 int main(int argc, char *argv[]) {
-  FILE *fh;
-  unsigned char buffer[32];
+  PEFILE pe;
 
   if (argc != 2)
     err("Error! Pass an .exe file to be read.");
+  
+  pe.filepath = argv[1];
+  testpe_init(&pe);
 
-  fh = fopen(argv[1], "rb");
-
-  if (fh == NULL)
-    err("Error! File not found or cannot be read.");
-
-  if (fread(buffer, 32, 1, fh) != 1)
-    err("Error! I was unable to read the 32 bytes of the file.");
-
-  fclose(fh);
-
-  if (!testpe_ispe(buffer))
+  if (!testpe_ispe)
     err("Error! Pass an .exe file.");
   
+  printf("File: %s\n", pe.filepath);
+  printf("MZ: %x\n", pe.hdr_dos->e_magic);
+  printf("COFF header offset: %x\n", pe.hdr_dos->e_lfanew);
+
   return 0;
 
 }

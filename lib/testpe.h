@@ -1,5 +1,7 @@
 #include <stdbool.h>
 #include <inttypes.h>
+#include <stdio.h>
+#include <stdlib.h>
 
 #pragma pack(push, 1)
 
@@ -25,4 +27,11 @@ typedef struct {
     uint32_t e_lfanew; // sizeof(IMAGE_DOS_HEADER) + size of MS-DOS stub
 } IMAGE_DOS_HEADER;
 
-bool testpe_ispe(const unsigned char *b);
+typedef struct {
+  char *filepath;
+  IMAGE_DOS_HEADER *hdr_dos;
+} PEFILE;
+
+bool testpe_ispe(PEFILE *pe);
+
+bool testpe_init(PEFILE *pe);
