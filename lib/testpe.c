@@ -21,3 +21,8 @@ bool testpe_init(PEFILE *pe) {
 
   return true;
 }
+
+void testpe_deinit(PEFILE *pe) {
+  if (pe->hdr_dos)
+    free(pe->hdr_dos);
+}

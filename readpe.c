@@ -23,6 +23,8 @@ int main(int argc, char *argv[]) {
   printf("MZ: %x\n", pe.hdr_dos->e_magic);
   printf("COFF header offset: %x\n", pe.hdr_dos->e_lfanew);
 
+  testpe_deinit(&pe);
+
   return 0;
 
 }
